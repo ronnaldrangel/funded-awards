@@ -173,7 +173,7 @@ export default function CertificateForm() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#1e1e20' }}>
-      <div className="container mx-auto px-4 py-8">
+      <div className="px-4 py-8">
 
         {/* Progress Bar */}
         <div className="mb-8">
