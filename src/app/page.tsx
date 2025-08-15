@@ -214,20 +214,7 @@ export default function CertificateForm() {
         <div className="border border-yellow-600/40 rounded-xl sm:rounded-2xl shadow-2xl mx-auto backdrop-blur-md ring-1 ring-yellow-600/20" style={{backgroundColor: '#131313'}}>
           <div className="p-4 sm:p-6 lg:p-8">
 
-            {/* Previous Button - Inside Form */}
-             {currentStep > 1 && (
-               <div className="mb-4 sm:mb-6">
-                 <button
-                   onClick={() => setCurrentStep(currentStep - 1)}
-                   className="flex items-center space-x-2 px-4 sm:px-6 py-2 sm:py-3 bg-gray-800/80 text-white rounded-lg sm:rounded-xl hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm border border-gray-600/30 text-sm sm:text-base"
-                 >
-                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                   </svg>
-                   <span>Back</span>
-                 </button>
-               </div>
-             )}
+
 
             {/* Step 1: Upload Image */}
             {currentStep === 1 && (
@@ -593,31 +580,42 @@ export default function CertificateForm() {
             {/* Navigation Buttons */}
             <div className="pt-6 sm:pt-10 px-2 sm:px-0">
               {currentStep < 4 ? (
-              <button
-                onClick={nextStep}
-                disabled={
-                  (currentStep === 1 && !formData.image) ||
-                  (currentStep === 2 && !formData.size) ||
-                  (currentStep === 3 && (!formData.personalData.firstName || !formData.personalData.lastName || !formData.personalData.email || !formData.shippingData.address || !formData.shippingData.city || !formData.shippingData.postalCode || !formData.shippingData.country))
-                }
-                className={`w-full flex items-center justify-center space-x-2 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-base lg:text-lg tracking-wide transition-all duration-300 shadow-xl ${
-                   (currentStep === 1 && !formData.image) ||
-                   (currentStep === 2 && !formData.size) ||
-                   (currentStep === 3 && (!formData.personalData.firstName || !formData.personalData.lastName || !formData.personalData.email || !formData.shippingData.address || !formData.shippingData.city || !formData.shippingData.postalCode || !formData.shippingData.country))
-                     ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                     : 'text-black hover:shadow-2xl transform hover:scale-105'
-                 }`}
-                 style={{
-                   background: (currentStep === 1 && !formData.image) ||
-                              (currentStep === 2 && !formData.size) ||
-                              (currentStep === 3 && (!formData.personalData.firstName || !formData.personalData.lastName || !formData.personalData.email || !formData.shippingData.address || !formData.shippingData.city || !formData.shippingData.postalCode || !formData.shippingData.country))
-                     ? undefined
-                     : 'linear-gradient(135deg, #e4b833 0%, #f8df51 100%)'
-                 }}
-                >
-                  <span>Next</span>
-                  <ArrowRightIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                </button>
+                <div className="flex gap-3">
+                  {currentStep > 1 && (
+                    <button
+                      onClick={prevStep}
+                      className="flex items-center justify-center space-x-2 px-4 sm:px-6 py-3 sm:py-4 bg-gray-800/80 text-white rounded-lg sm:rounded-xl hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm border border-gray-600/30 text-sm sm:text-base font-bold tracking-wide"
+                    >
+                      <ArrowLeftIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                      <span>Back</span>
+                    </button>
+                  )}
+                  <button
+                    onClick={nextStep}
+                    disabled={
+                      (currentStep === 1 && !formData.image) ||
+                      (currentStep === 2 && !formData.size) ||
+                      (currentStep === 3 && (!formData.personalData.firstName || !formData.personalData.lastName || !formData.personalData.email || !formData.shippingData.address || !formData.shippingData.city || !formData.shippingData.postalCode || !formData.shippingData.country))
+                    }
+                    className={`flex-1 flex items-center justify-center space-x-2 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-base lg:text-lg tracking-wide transition-all duration-300 shadow-xl ${
+                       (currentStep === 1 && !formData.image) ||
+                       (currentStep === 2 && !formData.size) ||
+                       (currentStep === 3 && (!formData.personalData.firstName || !formData.personalData.lastName || !formData.personalData.email || !formData.shippingData.address || !formData.shippingData.city || !formData.shippingData.postalCode || !formData.shippingData.country))
+                         ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                         : 'text-black hover:shadow-2xl transform hover:scale-105'
+                     }`}
+                     style={{
+                       background: (currentStep === 1 && !formData.image) ||
+                                  (currentStep === 2 && !formData.size) ||
+                                  (currentStep === 3 && (!formData.personalData.firstName || !formData.personalData.lastName || !formData.personalData.email || !formData.shippingData.address || !formData.shippingData.city || !formData.shippingData.postalCode || !formData.shippingData.country))
+                         ? undefined
+                         : 'linear-gradient(135deg, #e4b833 0%, #f8df51 100%)'
+                     }}
+                    >
+                      <span>Next</span>
+                      <ArrowRightIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                    </button>
+                </div>
               ) : (
                 <button
                 onClick={handleSubmit}
