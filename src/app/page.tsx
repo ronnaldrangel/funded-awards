@@ -587,7 +587,7 @@ export default function CertificateForm() {
                       className="flex items-center justify-center space-x-2 px-4 sm:px-6 py-3 sm:py-4 bg-gray-800/80 text-white rounded-lg sm:rounded-xl hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm border border-gray-600/30 text-sm sm:text-base font-bold tracking-wide"
                     >
                       <ArrowLeftIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                      <span>Back</span>
+                      {/* <span>Back</span> */}
                     </button>
                   )}
                   <button
